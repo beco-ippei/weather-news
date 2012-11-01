@@ -21,7 +21,15 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
 
+group :test, :development do
+  gem 'rspec-rails'
+end
+
+#  gem 'sass-rails',   '~> 3.2.3'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
