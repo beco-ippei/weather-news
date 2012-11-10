@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+#gem 'rails', '3.2.8'
+
+gem 'activerecord-deprecated_finders',
+  git: 'git://github.com/rails/activerecord-deprecated_finders.git'
+gem 'journey', git: 'git://github.com/rails/journey.git'
 
 # Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,6 +30,8 @@ gem "twitter-bootstrap-rails"
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'debugger'
+  gem 'ir_b'
 end
 
 #  gem 'sass-rails',   '~> 3.2.3'
