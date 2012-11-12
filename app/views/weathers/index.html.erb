@@ -1,21 +1,23 @@
-<h1>Listing weathers</h1>
+<h1>Weather</h1>
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td></td>
+    <td>weather</td>
+    <td>temperature</td>
+    <td>wind</td>
+    <td>wind_direction</td>
+    <td>rain</td>
   </tr>
 
-<% @weathers.each do |weather| %>
+<% @weather.hour_reports.each_with_index do |report, i| %>
   <tr>
-    <td><%= link_to 'Show', weather %></td>
-    <td><%= link_to 'Edit', edit_weather_path(weather) %></td>
-    <td><%= link_to 'Destroy', weather, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= (@weather.hour_start_at + i.hours).strftime('%m/%d %H') %></td>
+    <td><%= report.weather %></td>
+    <td><%= report.temperature %></td>
+    <td><%= report.wind %></td>
+    <td><%= report.wind_direction %></td>
+    <td><%= report.rain %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Weather', new_weather_path %>

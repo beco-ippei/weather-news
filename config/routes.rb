@@ -1,5 +1,5 @@
 WeatherNews::Application.routes.draw do
-  resources :weathers
+  resources :weathers, only: [:index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

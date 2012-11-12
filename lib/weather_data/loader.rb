@@ -15,12 +15,16 @@ class Loader
 
   def hour_start_at
     day = data['day']
+
+#    start_date = "#{day['startYear']}-#{day['startMonth']}-#{day['startDate']}"
+
     year = day['startYear']
     month = day['startMonth']
-    day = day['startDate']
+    day_of_month = day['startDate']
     #day_of_week = day['startDay']
     hour = day['startHour']
-    Time.new("#{year}-#{month}-#{day} #{hour}:00:00")
+#    Time.new("#{year}-#{month}-#{day_of_month} #{hour}:00:00")
+    Time.new(year, month, day_of_month, hour, 0, 0)
   end
 
   def hour_reports
