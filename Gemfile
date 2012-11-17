@@ -9,6 +9,8 @@ gem 'journey', git: 'git://github.com/rails/journey.git'
 # Bundle edge Rails instead:
 gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'active_decorator'
+
 gem 'sqlite3'
 
 # Gems used only for assets and not required
@@ -37,9 +39,6 @@ end
 #  gem 'sass-rails',   '~> 3.2.3'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'

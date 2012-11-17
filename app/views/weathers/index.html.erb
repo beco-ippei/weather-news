@@ -2,21 +2,27 @@
 
 <table>
   <tr>
-    <td></td>
-    <td>weather</td>
-    <td>temperature</td>
-    <td>wind</td>
-    <td>wind_direction</td>
-    <td>rain</td>
+    <th></th>
+    <th></th>
+    <th>temp</th>
+    <th>wind</th>
+    <th>rain</th>
   </tr>
 
 <% @weather.hour_reports.each_with_index do |report, i| %>
+  <% if i.zero? || @weather.hour(i).to_i.zero? %>
   <tr>
-    <td><%= (@weather.hour_start_at + i.hours).strftime('%m/%d %H') %></td>
-    <td><%= report.weather %></td>
+    <td colspan="5" class="day"><%= @weather.day(i) %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <td><%= @weather.hour(i) %></td>
+    <td><%= weather_tag report.weather %></td>
     <td><%= report.temperature %></td>
-    <td><%= report.wind %></td>
-    <td><%= report.wind_direction %></td>
+    <td>
+      <%= wind_value report %>
+      <!--      <%= report.wind_direction %>/<%= report.wind %> -->
+    </td>
     <td><%= report.rain %></td>
   </tr>
 <% end %>
