@@ -22,8 +22,23 @@ module WeathersHelper
   }
 
   def weather_tag(weather)
-    raw "<p class='weather_#{weather}'>#{weather}</p>"
+    tag = "<span class='weather_#{weather.to_i.round(-2)}'>#{weather}</span>"
+    if (next_weather = weather.to_i % 10) > 0
+      tag += "時々<span class='weather_#{next_weather*100}'>#{weather}</span>"
+    elsif (sometime_weather = weather.to_i / 10 % 10) > 0
+      tag += "のち<span class='weather_#{sometime_weather*100}'>#{weather}</span>"
+    end
+
+    raw tag + "<br><span class='font-m'>#{weather}(#{WEATHER[weather.to_i]})</span>"
   end
+  WEATHER = {
+    100  => '晴',
+    110  => '晴 / 曇',
+    200  => '曇',
+    201  => '曇時々晴',
+    202  => '曇時々雨',
+    300  => '雨',
+  }
 
   def wind_value(report)
     "#{DIRECTION_J[report.wind_direction.to_i]}/#{report.wind}"

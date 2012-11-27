@@ -1,0 +1,49 @@
+/*
+// Place all the styles related to the weathers controller here.
+// They will automatically be included in application.css.
+// You can use Less here: http://lesscss.org/
+*/
+th {
+  font-size: medium;
+}
+td {
+  font-size: x-large;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+td.day {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  background-color: #AA6;
+  color: #FFF;
+}
+.font-m {
+  font-size: medium;
+}
+.weather_100 {
+  content: url('/images/sunny.jpg');
+  width: 50px;
+  height: 50px;
+}
+.weather_200 {
+  content: url('/images/cloudy_50.jpg');
+  width: 50px;
+  height: 50px;
+}
+.weather_300 {
+  content: url('/images/rainy_50.jpg');
+  width: 50px;
+  height: 50px;
+}
+.width_wrap {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+article {
+/*  padding-top: 20px; */
+  top: 30px;
+}
+footer {
+  clear: both;
+}

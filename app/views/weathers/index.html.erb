@@ -1,5 +1,4 @@
-<h1>Weather</h1>
-
+<h1>Hourly Weather</h1>
 <table>
   <tr>
     <th></th>
@@ -11,10 +10,11 @@
 
 <% @weather.hour_reports.each_with_index do |report, i| %>
   <% if i.zero? || @weather.hour(i).to_i.zero? %>
-  <tr>
-    <td colspan="5" class="day"><%= @weather.day(i) %></td>
+  <tr class="day">
+    <td colspan="5" class="day"><%= @weather.day_by_hour(i) %></td>
   </tr>
   <% end %>
+  <% next if i % 3 != 0 %>
   <tr>
     <td><%= @weather.hour(i) %></td>
     <td><%= weather_tag report.weather %></td>
@@ -24,6 +24,24 @@
       <!--      <%= report.wind_direction %>/<%= report.wind %> -->
     </td>
     <td><%= report.rain %></td>
+  </tr>
+<% end %>
+</table>
+<hr>
+<h1>Weekly Weather</h1>
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th>temp</th>
+    <th>rain</th>
+  </tr>
+<% @weather.week_reports.each_with_index do |report, i| %>
+  <tr>
+    <td><%= @weather.day(i) %></td>
+    <td><%= weather_tag report.weather %></td>
+    <td><%= report.min_temperature %> / <%= report.max_temperature %></td>
+    <td><%= report.chance_of_rain %>%</td>
   </tr>
 <% end %>
 </table>

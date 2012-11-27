@@ -1,7 +1,7 @@
 require Rails.root.to_path + '/lib/weather_data/loader'
 
 class Weather
-  attr_accessor :hour_start_at, :hour_reports
+  attr_accessor :hour_start_at, :hour_reports, :week_reports
 #    :time, :area, :week_reports,
 #    :temperature_unit, :wind_unit, :rain_unit, :probability_of_rain_unit
 
@@ -10,6 +10,7 @@ class Weather
 
     @hour_start_at = loader.hour_start_at
     @hour_reports = loader.hour_reports
+    @week_reports = loader.week_reports
   end
 
   class HourReport
@@ -26,7 +27,11 @@ class Weather
   end
 
   class WeekReport
-    attr_reader :date, :week_day, :sunday, :saturday,
-      :weather, :max_temperature, :min_temprature, :probability_of_rain
+    attr_accessor :weather, :max_temperature, :min_temperature, :chance_of_rain
+
+    def temperature=(value)
+      @max_temperature = value['max']
+      @min_temperature = value['min']
+    end
   end
 end

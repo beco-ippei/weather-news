@@ -16,14 +16,10 @@ class Loader
   def hour_start_at
     day = data['day']
 
-#    start_date = "#{day['startYear']}-#{day['startMonth']}-#{day['startDate']}"
-
     year = day['startYear']
     month = day['startMonth']
     day_of_month = day['startDate']
-    #day_of_week = day['startDay']
     hour = day['startHour']
-#    Time.new("#{year}-#{month}-#{day_of_month} #{hour}:00:00")
     Time.new(year, month, day_of_month, hour, 0, 0)
   end
 
@@ -36,6 +32,18 @@ class Loader
         r.temperature = hour_values[1]
         r.wind = hour_values[2]
         r.rain = hour_values[3]
+      end
+    end
+  end
+
+  def week_reports
+    values = data['week']
+    keys = %w[weather temperature chance_of_rain]
+    keys.map {|k| values[k]['day'] }.transpose.map do |week_values|
+      report = Weather::WeekReport.new.tap do |r|
+        r.weather = week_values[0]
+        r.temperature = week_values[1]
+        r.chance_of_rain = week_values[2]
       end
     end
   end

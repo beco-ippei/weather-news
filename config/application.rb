@@ -17,8 +17,9 @@ module WeatherNews
 
     # Custom directories with classes and modules you want to be autoloadable.
     #config.autoload_paths += %W(#{config.root}/extras)
-    config.autoload_paths += %W(#{Rails.root.to_path}/lib/**/*.rb)
+#    config.autoload_paths += %W(#{Rails.root.to_path}/lib/**/*.rb)
     #TODO: うまく動いていない気がする
+    config.autoload_paths << File.join(Rails.root.to_path, '/lib/weather_news')
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
