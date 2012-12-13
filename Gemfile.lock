@@ -91,6 +91,7 @@ GEM
     mime-types (1.19)
     minitest (4.2.0)
     multi_json (1.3.7)
+    pg (0.14.1)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-test (0.6.2)
@@ -120,7 +121,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sqlite3 (1.3.6)
     therubyracer (0.10.2)
       libv8 (~> 3.3.10)
     thin (1.5.0)
@@ -150,9 +150,9 @@ DEPENDENCIES
   journey!
   jquery-rails
   less-rails
+  pg
   rails!
   rspec-rails
-  sqlite3
   therubyracer
   thin
   twitter-bootstrap-rails
