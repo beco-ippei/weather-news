@@ -9,7 +9,7 @@ module WeatherDecorator
   end
 
   def day(num)
-    (hour_start_at + num.days).strftime '%m/%d'
+    (hour_start_at + (num+1).days).strftime '%m/%d'
   end
 
   private

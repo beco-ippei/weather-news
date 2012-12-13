@@ -10,6 +10,7 @@ td {
   font-size: x-large;
   padding-left: 5px;
   padding-right: 5px;
+  text-align: center;
 }
 td.day {
   padding-top: 10px;
@@ -17,23 +18,24 @@ td.day {
   background-color: #AA6;
   color: #FFF;
 }
+.font-l {
+  font-size: large;
+}
 .font-m {
   font-size: medium;
 }
-.weather_100 {
-  content: url('/images/sunny.jpg');
+img {
   width: 50px;
   height: 50px;
 }
-.weather_200 {
-  content: url('/images/cloudy_50.jpg');
-  width: 50px;
-  height: 50px;
+img.s {
+  width: 25px;
+  height: 25px;
+  margin-left: -10px;
+  vertical-align: bottom;
 }
-.weather_300 {
-  content: url('/images/rainy_50.jpg');
-  width: 50px;
-  height: 50px;
+.align-bottom {
+  vertical-align: bottom;
 }
 .width_wrap {
   max-width: 700px;
@@ -43,6 +45,7 @@ td.day {
 article {
 /*  padding-top: 20px; */
   top: 30px;
+  clear: both;
 }
 footer {
   clear: both;

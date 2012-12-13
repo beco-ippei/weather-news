@@ -1,12 +1,13 @@
 class Loader
   FILE_PATH = 'vendor/weather_data/61286.xml'
 
-  attr_accessor :xml_data, :data
+  attr_accessor :xml_data, :data, :date_info
 
   def initialize
     xml_data = Hash::from_xml(File.open(FILE_PATH).read)['weathernews']
 
     @data = xml_data['data']
+    @date_info = xml_data['date']
   end
 
   def area
@@ -27,8 +28,8 @@ class Loader
     values = data['day']
     keys = %w[weather temperature wind precipitation]
     keys.map {|k| values[k]['hour'] }.transpose.map do |hour_values|
-      report = Weather::HourReport.new.tap do |r|
-        r.weather = hour_values[0]
+      Weather::HourReport.new.tap do |r|
+        r.weather = hour_values[0].to_i
         r.temperature = hour_values[1]
         r.wind = hour_values[2]
         r.rain = hour_values[3]
@@ -38,10 +39,11 @@ class Loader
 
   def week_reports
     values = data['week']
+    days = data['week']
     keys = %w[weather temperature chance_of_rain]
     keys.map {|k| values[k]['day'] }.transpose.map do |week_values|
-      report = Weather::WeekReport.new.tap do |r|
-        r.weather = week_values[0]
+      Weather::WeekReport.new.tap do |r|
+        r.weather = week_values[0].to_i
         r.temperature = week_values[1]
         r.chance_of_rain = week_values[2]
       end

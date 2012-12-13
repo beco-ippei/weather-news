@@ -27,7 +27,7 @@ class Weather
   end
 
   class WeekReport
-    attr_accessor :weather, :max_temperature, :min_temperature, :chance_of_rain
+    attr_accessor :weather, :max_temperature, :min_temperature, :chance_of_rain, :date
 
     def temperature=(value)
       @max_temperature = value['max']
