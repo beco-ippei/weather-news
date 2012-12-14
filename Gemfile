@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-#gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 
 gem 'activerecord-deprecated_finders',
   git: 'git://github.com/rails/activerecord-deprecated_finders.git'
-gem 'journey', git: 'git://github.com/rails/journey.git'
 
 # Bundle edge Rails instead:
-gem 'rails', :git => 'git://github.com/rails/rails.git'
+#gem 'rails', :git => 'git://github.com/rails/rails.git'
+#gem 'journey', git: 'git://github.com/rails/journey.git'
 
 gem 'active_decorator'
 
