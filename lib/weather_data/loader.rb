@@ -1,10 +1,15 @@
 class Loader
-  FILE_PATH = 'vendor/weather_data/61286.xml'
+  FILE_PATH = 'vendor/weather_data/'
 
   attr_accessor :xml_data, :data, :date_info
 
-  def initialize
-    xml_data = Hash::from_xml(File.open(FILE_PATH).read)['weathernews']
+  class LoaderException; end
+
+  def initialize(point)
+    if !File.exists?(file = FILE_PATH+"#{point}.xml")
+      raise LoaderException.new
+    end
+    xml_data = Hash::from_xml(File.open(file).read)['weathernews']
 
     @data = xml_data['data']
     @date_info = xml_data['date']

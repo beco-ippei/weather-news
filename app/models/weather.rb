@@ -5,12 +5,17 @@ class Weather
 #    :time, :area, :week_reports,
 #    :temperature_unit, :wind_unit, :rain_unit, :probability_of_rain_unit
 
-  def initialize
-    loader = Loader.new
+  def initialize(point)
+    loader = Loader.new(point)
 
     @hour_start_at = loader.hour_start_at
     @hour_reports = loader.hour_reports
     @week_reports = loader.week_reports
+  end
+
+  def debug(msg)
+    t = Time.now
+    puts "#{t.to_s(:db) + '.%03d' % (t.usec / 1000.0)} >> #{msg}"
   end
 
   class HourReport

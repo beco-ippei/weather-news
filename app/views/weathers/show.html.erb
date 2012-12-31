@@ -1,0 +1,57 @@
+<style type="text/css">
+</style>
+<h1>Hourly Weather</h1>
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th>temp</th>
+    <th>wind</th>
+    <th>rain</th>
+  </tr>
+
+<% @weather.hour_reports.each_with_index do |report, i| %>
+  <% if i.zero? || @weather.hour(i).to_i.zero? %>
+  <tr class="day">
+    <td colspan="5" class="day"><%= @weather.day_by_hour(i) %></td>
+  </tr>
+  <% end %>
+  <% next if i % 3 != 0 %>
+  <tr>
+    <td><%= @weather.hour(i) %></td>
+    <td><%= image_tag weather_images(report.weather)[0], alt: weather_name(report.weather) %></td>
+    <td><%= report.temperature %></td>
+    <td>
+      <%= wind_value report %>
+      <!--      <%= report.wind_direction %>/<%= report.wind %> -->
+    </td>
+    <td><%= report.rain %></td>
+  </tr>
+<% end %>
+</table>
+<hr>
+<h1>Weekly Weather</h1>
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th>temp</th>
+    <th>rain</th>
+  </tr>
+<% @weather.week_reports.each_with_index do |report, i| %>
+  <tr>
+    <td class='font-l'><%= @weather.day(i) %></td>
+    <% images = weather_images report.weather %>
+    <td>
+      <%= image_tag images[0], alt: weather_name(report.weather) %>
+    <% if images[1] %>
+      <span><%= images[1] == 1 ? '/' : '|' %></span>
+      <% image2_options = images[1] == 1 ? {class: 's'} : {} %>
+      <%= image_tag images[2], image2_options %>
+    <% end %>
+    </td>
+    <td><%= report.min_temperature %>/<%= report.max_temperature %></td>
+    <td><%= report.chance_of_rain %>%</td>
+  </tr>
+<% end %>
+</table>
