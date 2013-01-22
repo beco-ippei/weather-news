@@ -1,6 +1,6 @@
 class WeathersController < ApplicationController
   def index
-    @weather = Weather.new
+#    @weather = Weather.new
   end
 
   def show
