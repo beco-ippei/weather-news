@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.11'
 
 gem 'activerecord-deprecated_finders',
   git: 'git://github.com/rails/activerecord-deprecated_finders.git'
@@ -11,8 +11,12 @@ gem 'activerecord-deprecated_finders',
 
 gem 'active_decorator'
 
-#gem 'sqlite3'
-gem 'pg'
+group :development, :test do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
