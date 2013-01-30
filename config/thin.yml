@@ -1,0 +1,9 @@
+pid: tmp/pids/thin.pid
+log: log/thin.log
+servers: 1
+port: 3010
+#daemonize: true
+environment: production
+user: app
+group: app
+
