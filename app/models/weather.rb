@@ -32,11 +32,16 @@ class Weather
   end
 
   class WeekReport
-    attr_accessor :weather, :max_temperature, :min_temperature, :chance_of_rain, :date
+    attr_accessor :weather, :max_temperature, :min_temperature,
+      :chance_of_rain, :date
 
     def temperature=(value)
       @max_temperature = value['max']
       @min_temperature = value['min']
+    end
+
+    def date=(value)
+      @date = Date.parse(Date.today.strftime("%Y-%m-#{value['date']}"))
     end
   end
 end

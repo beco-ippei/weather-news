@@ -44,13 +44,14 @@ class Loader
 
   def week_reports
     values = data['week']
-    days = data['week']
+    dates = date_info['week']
     keys = %w[weather temperature chance_of_rain]
-    keys.map {|k| values[k]['day'] }.transpose.map do |week_values|
+    (keys.map {|k| values[k]['day'] }.push(dates['day'])).transpose.map do |week_values|
       Weather::WeekReport.new.tap do |r|
         r.weather = week_values[0].to_i
         r.temperature = week_values[1]
         r.chance_of_rain = week_values[2]
+        r.date = week_values[3]
       end
     end
   end

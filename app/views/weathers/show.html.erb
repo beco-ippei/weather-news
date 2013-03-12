@@ -44,7 +44,9 @@
   </tr>
 <% @weather.week_reports.each_with_index do |report, i| %>
   <tr>
-    <td class='font-l'><%= @weather.day(i) %></td>
+    <td class='font-l'>
+      <%= report.date.to_s('%m/%d') %>
+    </td>
     <% images = weather_images report.weather %>
     <td>
     <% unless images[0] %>
