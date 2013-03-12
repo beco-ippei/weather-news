@@ -17,7 +17,13 @@
   <% next if i % 3 != 0 %>
   <tr>
     <td><%= @weather.hour(i) %></td>
-    <td><%= image_tag weather_images(report.weather)[0], alt: weather_name(report.weather) %></td>
+    <td>
+    <% if weather_image = weather_images(report.weather)[0] %>
+      <%= image_tag weather_image, alt: weather_name(report.weather) %>
+    <% else %>
+      <%= weather_name(report.weather) %>
+    <% end %>
+    </td>
     <td><%= report.temperature %></td>
     <td>
       <%= wind_value report %>
@@ -41,11 +47,15 @@
     <td class='font-l'><%= @weather.day(i) %></td>
     <% images = weather_images report.weather %>
     <td>
+    <% unless images[0] %>
+      <%= weather_name(report.weather) %>
+    <% else %>
       <%= image_tag images[0], alt: weather_name(report.weather) %>
-    <% if images[1] %>
-      <span><%= images[1] == 1 ? '/' : '|' %></span>
-      <% image2_options = images[1] == 1 ? {class: 's'} : {} %>
-      <%= image_tag images[2], image2_options %>
+      <% if images[1] %>
+        <span><%= images[1] == 1 ? '/' : '|' %></span>
+        <% image2_options = images[1] == 1 ? {class: 's'} : {} %>
+        <%= image_tag images[2], image2_options %>
+      <% end %>
     <% end %>
     </td>
     <td><%= report.min_temperature %>/<%= report.max_temperature %></td>
