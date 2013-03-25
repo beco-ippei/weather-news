@@ -45,7 +45,7 @@
 <% @weather.week_reports.each_with_index do |report, i| %>
   <tr>
     <td class='font-l'>
-      <%= report.date.to_s('%m/%d') %>
+      <%= report.date.strftime('%m/%d') %>
     </td>
     <% images = weather_images report.weather %>
     <td>
