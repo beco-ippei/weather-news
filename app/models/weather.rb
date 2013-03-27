@@ -39,9 +39,5 @@ class Weather
       @max_temperature = value['max']
       @min_temperature = value['min']
     end
-
-    def date=(value)
-      @date = Date.parse(Date.today.strftime("%Y-%m-#{value['date']}"))
-    end
   end
 end
