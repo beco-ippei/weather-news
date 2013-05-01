@@ -23,8 +23,7 @@
 
 
 development:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
   host: localhost
   database: weather-news_development
   pool: 5
@@ -32,8 +31,7 @@ development:
   password: app
 
 test:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
   host: localhost
   database: weather-news_test
   pool: 5
@@ -41,10 +39,9 @@ test:
   password: app
 
 production:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
   host: localhost
-  database: weather-news_production
+  database: weather-news
   pool: 5
   username: app
   password: app

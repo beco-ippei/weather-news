@@ -11,12 +11,7 @@ gem 'activerecord-deprecated_finders',
 
 gem 'active_decorator'
 
-group :development, :test do
-  gem 'sqlite3'
-end
-group :production do
-  gem 'pg'
-end
+gem 'mysql2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,8 +32,9 @@ gem "twitter-bootstrap-rails"
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'debugger'
+#  gem 'debugger'
   gem 'ir_b'
+  gem 'spork'
 end
 
 #  gem 'sass-rails',   '~> 3.2.3'
@@ -47,7 +43,7 @@ end
 
 # Use unicorn as the app server
 # gem 'unicorn'
-gem 'thin'
+#gem 'thin'
 
 # Deploy with Capistrano
 # gem 'capistrano'
