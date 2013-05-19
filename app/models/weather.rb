@@ -1,5 +1,29 @@
 require Rails.root.to_path + '/lib/weather_data/loader'
 
+# TODO: mod datamodel.
+# think-with-yaml....
+# *report
+#   - report_date (date)
+#   - place (??)
+#   - report_time (datatime)
+#   hour:
+#     - report_hour
+#     - weather
+#     - temperature
+#     - wind
+#     - wind_direction
+#     - rain
+#   day:
+#     - date
+#     - weather
+#     - max_temperature
+#     - min_temperature
+#     - chance_of_rain
+#     - date
+#
+# at first, use MySQL.
+# after dev RDB version, use NoSQL(like MongoDB)
+#
 class Weather
   attr_accessor :hour_start_at, :hour_reports, :week_reports
 #    :time, :area, :week_reports,
