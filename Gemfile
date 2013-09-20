@@ -11,12 +11,13 @@ gem 'activerecord-deprecated_finders',
 
 gem 'active_decorator'
 
-group :development, :test do
-  gem 'sqlite3'
-end
-group :production do
-  gem 'pg'
-end
+gem 'sqlite3'
+#group :development, :test do
+#  gem 'sqlite3'
+#end
+#group :production do
+#  gem 'pg'
+#end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,7 +38,7 @@ gem "twitter-bootstrap-rails"
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'debugger'
+#  gem 'debugger'
   gem 'ir_b'
 end
 
