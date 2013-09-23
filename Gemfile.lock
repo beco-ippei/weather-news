@@ -41,6 +41,8 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.14)
+    bootstrap-generators (3.0.0)
+      railties (>= 3.1)
     builder (3.1.4)
     commonjs (0.2.7)
     daemons (1.1.9)
@@ -137,6 +139,7 @@ DEPENDENCIES
   active_decorator
   activerecord-deprecated_finders!
   anjlab-bootstrap-rails!
+  bootstrap-generators (~> 3.0)
   ir_b
   jquery-rails
   less-rails

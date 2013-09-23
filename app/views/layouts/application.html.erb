@@ -1,77 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "WeatherNews" %></title>
-    <%#= csrf_meta_tags %>
+<head>
+  <meta charset="utf-8">
+  <title>Starter Template for Bootstrap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <%= stylesheet_link_tag "application", :media => "all" %>
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag "bootstrap-ie" %>
+  <![endif]-->
 
-    <!-- For all other devices -->
-    <!-- Size should be 32 x 32 pixels -->
-    <%#= favicon_link_tag 'images/favicon.ico', :rel => 'shortcut icon' %>
-  </head>
-
-  <body>
-    <div id="wrapper" class="width_wrap">
-      <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="width_wrap">
-<% if false %>
-            <!--a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </a-->
-<% end %>
-            <a class="brand" href="/weathers">WeatherNews</a>
-<% if false %>
-            <div class="nav-collapse width_wrap">
-              <div class="pull-right">
-                <%#= form_tag destroy_user_session_path, method: :delete, style: 'margin: 0;' do %>
-                  <%#= submit_tag 'Logout', class: 'btn' %>
-                <%# end #if user_signed_in? %>
-              </div>
-            </div><!--/.nav-collapse -->
-<% end %>
-          </div>
-        </div>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "Project name", "#", :class => "navbar-brand" %>
       </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do %>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= msg %>
+      <% end %>
+    <% end %>
 
-      <article>
-        <div class="content">
-<% if false %>
-          <div class="row">
-            <div class="span3 pull-left">
-              <div class="well sidebar-nav">
-                <h3>Sidebar</h3>
-                <ul class="nav nav-list">
-                  <li class="nav-header">Sidebar</li>
-                  <li><%= link_to "Link1", "/path1"  %></li>
-                  <li><%= link_to "Link2", "/path2"  %></li>
-                  <li><%= link_to "Link3", "/path3"  %></li>
-                </ul>
-              </div><!--/.well -->
-            </div><!--/div.span3 -->
-          </div>
-<% end %>
-          <div class="span6 pull-right">
-            <%= yield %>
-          </div>
-        </div><!--/content-->
-
-        <footer>
-          <p>&copy; beco_ippei 2012</p>
-        </footer>
-      </article>
-
-      <!-- Javascripts
-      ================================================== -->
-      <!-- Placed at the end of the document so the pages load faster -->
-      <%#= javascript_include_tag "application" %>
-
-    </div><!-- div#wrapper -->
-  </body>
+    <%= yield %>
+  </div>
+</body>
 </html>

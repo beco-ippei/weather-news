@@ -35,6 +35,7 @@ gem 'jquery-rails'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'
+gem 'bootstrap-generators', '~> 3.0'
 
 group :test, :development do
   gem 'rspec-rails'
