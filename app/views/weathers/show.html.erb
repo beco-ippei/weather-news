@@ -1,4 +1,11 @@
+<style>
+.sunny { color: #cc0000; }
+.couldy { color: #666666; }
+.rainy { color: #3333cc; }
+</style>
+
 <h1>Hourly Weather</h1>
+
 <table>
   <tr>
     <th></th>
@@ -18,8 +25,8 @@
   <tr>
     <td><%= @weather.hour(i) %></td>
     <td>
-    <% if weather_image = weather_images(report.weather)[0] %>
-      <%= image_tag weather_image, alt: weather_name(report.weather) %>
+    <% if icon = weather_icons(report.weather).first %>
+      <i class="<%= icon %> icon-large"></i>
     <% else %>
       <%= weather_name(report.weather) %>
     <% end %>
@@ -33,7 +40,9 @@
   </tr>
 <% end %>
 </table>
+
 <hr>
+
 <h1>Weekly Weather</h1>
 <table>
   <tr>
@@ -47,17 +56,12 @@
     <td class='font-l'>
       <%= report.date.strftime('%m/%d') %>
     </td>
-    <% images = weather_images report.weather %>
+    <% icon1, connect, icon2 = weather_icons report.weather %>
     <td>
-    <% unless images[0] %>
-      <%= weather_name(report.weather) %>
-    <% else %>
-      <%= image_tag images[0], alt: weather_name(report.weather) %>
-      <% if images[1] %>
-        <span><%= images[1] == 1 ? '/' : '|' %></span>
-        <% image2_options = images[1] == 1 ? {class: 's'} : {} %>
-        <%= image_tag images[2], image2_options %>
-      <% end %>
+      <i class="<%= icon1 %> icon-2x"></i>
+    <% if icon2 %>
+      <span><%= connect == 1 ? '/' : '|' %></span>
+      <i class="<%= icon2 %><%= ' icon-2x' if connect != 1 %>"></i>
     <% end %>
     </td>
     <td><%= report.min_temperature %>/<%= report.max_temperature %></td>

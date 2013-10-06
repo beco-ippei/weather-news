@@ -53,19 +53,28 @@ module WeathersHelper
     4 => 'snowy',
     5 => 'sleety',
   }
+  ICON_CODES = {
+    1 => 'icon-sun sunny',
+    2 => 'icon-cloud couldy',
+    3 => 'icon-umbrella rainy',
+#    4 => 'snowy',
+#    5 => 'sleety',
+  }
 
-  def weather_images(weather)
-    return [nil, nil] unless WEATHERS.key?(weather)
-
-    key = WEATHERS[weather][0]
-    images = ["/images/#{WEATHER_CODES[key/100]}.jpg"]
-    if (connect = key % 100 / 10) > 0
-      images << connect
+  def weather_icons(weather)
+    unless WEATHERS.key?(weather)
+      [nil]
+    else
+      key = WEATHERS[weather][0]
+      icons = [ICON_CODES[key/100]]
+      if (connect = key % 100 / 10) > 0
+        icons.push connect
+      end
+      if (key2 = key % 10) > 0
+        icons.push ICON_CODES[key2]
+      end
+      icons
     end
-    if (key2 = key % 10) > 0
-      images << "/images/#{WEATHER_CODES[key2]}.jpg"
-    end
-    images
   end
 
   def weather_name(weather)
