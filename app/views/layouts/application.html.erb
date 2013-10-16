@@ -17,6 +17,18 @@
   <%= csrf_meta_tags %>
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<style>
+/*
+media screen and all {
+  .navbar-fixed-top {
+    margin-bottom; 10px;
+  }
+}
+div {
+  margin-top: 55px;
+}
+*/
+</style>
 </head>
 <body>
   <div class="navbar navbar-inverse navbar-fixed-top">
@@ -38,6 +50,7 @@
       </div>
     </div>
   </div>
+
   <div class="container">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, :class => "alert alert-dismissable
@@ -48,7 +61,8 @@
     <% end %>
 
     <%= yield %>
-  </div>
+  </div>    <!-- end of div.container -->
+
   <footer class="container">
     <p>&copy; beco_ippei 2012-<%= Date.today.year %></p>
   </footer>

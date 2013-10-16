@@ -3,50 +3,116 @@
 // They will automatically be included in application.css.
 // You can use Less here: http://lesscss.org/
 */
-th {
-  font-size: medium;
-}
-td {
-  font-size: x-large;
-  padding-left: 5px;
-  padding-right: 5px;
-  text-align: center;
-}
-td.day {
-  padding-top: 10px;
-  padding-bottom: 5px;
-  background-color: #AA6;
-  color: #FFF;
-}
-.font-l {
-  font-size: large;
-}
-.font-m {
-  font-size: medium;
-}
-img {
-  width: 50px;
-  height: 50px;
-}
-img.s {
-  width: 25px;
-  height: 25px;
-  margin-left: -10px;
-  vertical-align: bottom;
-}
-.align-bottom {
-  vertical-align: bottom;
-}
-.width_wrap {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
 article {
-/*  padding-top: 20px; */
   top: 30px;
   clear: both;
+  background-color: #fafafa;
+  margin-top: 60px;
 }
 footer {
   clear: both;
 }
+
+.sunny { color: #cc0000; }
+.couldy { color: #666666; }
+.rainy { color: #3333cc; }
+@media="all" article {
+  font-size: large;
+}
+
+.hourly-weather .wrapper {
+  margin-left: 30px;
+  clear: both;
+}
+
+label.hourly-check {
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.weather-box {
+  display: inline-block;
+  width: 55px;
+  border: solid 1px;
+  border-radius: 5px;
+  margin: 0 0 5px 2px;
+  text-align: center;
+}
+/*.weather-box.hidden-item {
+  display: inline-block;
+  display: none;
+}*/
+.weather-box .item {
+  display: inline-block;
+  margin-right: 0px;
+}
+.weather-box .item.hour {
+  text-align: left;
+  display: block;
+  font-size: 0.8em;
+  height: 10px;
+}
+.weekly-weather .icon {
+  width: 80px;
+}
+.weekly-weather .weather-box {
+  width: 90px;
+}
+.hourly-weather .day {
+  display: inline-block;
+  clear: both;
+  width: 27px;
+  text-align: right;
+  font-size: 0.8em;
+  margin-left: -30px;
+  margin-right: -2px;
+  -margin-top: 15px;
+  line-height: 1.2;
+}
+.zurui-sen {
+  alpha: 0.1;
+}
+.wind .direction {
+  display: inline-block;
+}
+.wind .direction-n {
+  /* not lotate */
+}
+.wind .direction-ne {
+  transform: rotate(45deg);
+  -webkit-transform:rotate(45deg);
+}
+.wind .direction-e {
+  transform: rotate(90deg);
+  -webkit-transform:rotate(90deg);
+}
+.wind .direction-se {
+  transform: rotate(135deg);
+  -webkit-transform:rotate(135deg);
+}
+.wind .direction-s {
+  transform: rotate(180deg);
+  -webkit-transform:rotate(180deg);
+}
+.wind .direction-sw {
+  transform: rotate(225deg);
+  -webkit-transform:rotate(225deg);
+}
+.wind .direction-w {
+  transform: rotate(270deg);
+  -webkit-transform:rotate(270deg);
+}
+.wind .direction-nw {
+  transform: rotate(315deg);
+  -webkit-transform:rotate(315deg);
+}
+.hourly-weather h2 {
+  display: inline-block;
+}
+/*.theme-bl .hourly-weather h2 {
+  color: #000000;;
+}
+.hourly-weather h2 {
+  color: #0000cc;
+  font-style: italic;
+} */

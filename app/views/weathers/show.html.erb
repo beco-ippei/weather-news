@@ -1,71 +1,82 @@
-<style>
-.sunny { color: #cc0000; }
-.couldy { color: #666666; }
-.rainy { color: #3333cc; }
-</style>
+<script>
+$(document).ready(function() {
+  $("#toggle-hourly").click(function(e) {
+    var fn = (e.target.checked ? 'remove' : 'add') + 'Class';
+    $(".weather-box.hidden-item")[fn]('hidden');
+  });
+});
+</script>
 
-<h1>Hourly Weather</h1>
+<article>
+<div class="hourly-weather">
+  <h2>Hourly Weather</h2>
+  <label for="toggle-hourly" class="hourly-check">
+    <div class="btn btn-primary">
+      <input type="checkbox" id="toggle-hourly" />
+      Hourly
+    </div>
+  </label>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th>temp</th>
-    <th>wind</th>
-    <th>rain</th>
-  </tr>
-
+  <div class="wrapper">
 <% @weather.hour_reports.each_with_index do |report, i| %>
-  <% if i.zero? || @weather.hour(i).to_i.zero? %>
-  <tr class="day">
-    <td colspan="5" class="day"><%= @weather.day_by_hour(i) %></td>
-  </tr>
-  <% end %>
-  <% next if i % 3 != 0 %>
-  <tr>
-    <td><%= @weather.hour(i) %></td>
-    <td>
-    <% if icon = weather_icons(report.weather).first %>
-      <i class="<%= icon %> icon-large"></i>
-    <% else %>
-      <%= weather_name(report.weather) %>
+    <% if (hour = hour(repo_time = @weather.time(i))).to_i.zero? || i.zero? %>
+    <div class="zurui-sen"></div>
+    <div class="day">
+      <div><%= month repo_time %></div>
+      <div style="font-size: 1.6em;"><%= day repo_time %></div>
+      <div>(<%= wday repo_time %>)</div>
+    </div>
     <% end %>
-    </td>
-    <td><%= report.temperature %></td>
-    <td>
-      <%= wind_value report %>
-      <!--      <%= report.wind_direction %>/<%= report.wind %> -->
-    </td>
-    <td><%= report.rain %></td>
-  </tr>
+    <div class="weather-box <%= 'hidden-item hidden' if hidden? repo_time %>">
+      <div class="item hour"><%= hour %></div>
+      <div class="item icon">
+      <% if icon = weather_icons(report.weather).first %>
+        <i class="<%= icon %> icon-large"></i>
+      <% else %>
+        <%= weather_name(report.weather) %>
+      <% end %>
+      </div>
+      <div class="item temperature"><%= report.temperature %></div>
+      <div class="item wind">
+        <% wind_direction, wind = wind_values(report) %>
+        <i class="direction direction-<%= wind_direction %> icon-long-arrow-up"></i>
+        <span class="wind-speed"><%= wind %></span>
+      </div>
+      <div class="item rain"><%= report.rain %><span style="font-size: 0.2em;">m</span></div>
+      <div style="clear: both;"></div>
+    </div>
 <% end %>
-</table>
+  </div>  <!-- end of div.wrapper -->
+</div>    <!-- end of div.hourly-weather -->
 
-<hr>
+<hr class="divider" style="clear: both;">
 
-<h1>Weekly Weather</h1>
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th>temp</th>
-    <th>rain</th>
-  </tr>
+<div class="weekly-weather">
+  <h2>Weekly Weather</h2>
 <% @weather.week_reports.each_with_index do |report, i| %>
-  <tr>
-    <td class='font-l'>
-      <%= report.date.strftime('%m/%d') %>
-    </td>
+  <div class="weather-box">
+    <div class='item date font-l'>
+      <span style="font-size: 0.9em;"><%= month report.date %></span>
+      <span style="font-size: 1.4em;"><%= day report.date %></span>
+      <span style="font-size: 0.6em;">(<%= wday report.date %>)</span>
+    </div>
     <% icon1, connect, icon2 = weather_icons report.weather %>
-    <td>
+    <div class="item icon">
       <i class="<%= icon1 %> icon-2x"></i>
     <% if icon2 %>
       <span><%= connect == 1 ? '/' : '|' %></span>
       <i class="<%= icon2 %><%= ' icon-2x' if connect != 1 %>"></i>
     <% end %>
-    </td>
-    <td><%= report.min_temperature %>/<%= report.max_temperature %></td>
-    <td><%= report.chance_of_rain %>%</td>
-  </tr>
+    </div>
+    <div class="item temperature">
+      <span class="text-danger"><%= report.max_temperature %></span>
+      /<span class="text-info"><%= report.min_temperature %></span>
+    </div>
+    <div class="item rain"><%= report.chance_of_rain %>%</div>
+    <div style="clear: both;"></div>
+  </div>
 <% end %>
-</table>
+  <div style="clear: both;"></div>
+</div>    <!-- end of div.weekly-weather -->
+
+</article>

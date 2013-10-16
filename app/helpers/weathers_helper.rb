@@ -81,7 +81,31 @@ module WeathersHelper
     WEATHERS.key?(weather) ? WEATHERS[weather][1] : "(#{weather})"
   end
 
-  def wind_value(report)
-    "#{DIRECTIONS_J[report.wind_direction.to_i]}/#{report.wind}"
+  def wind_values(report)
+    [DIRECTIONS[report.wind_direction.to_i].downcase, report.wind]
+  end
+
+#  def wind_value(report)
+#    "#{DIRECTIONS_J[report.wind_direction.to_i]}/#{report.wind}"
+#  end
+
+  def wday(time)
+    %w[日 月 火 水 木 金 土][time.wday]
+  end
+
+  def month(time)
+    time.strftime '%b'
+  end
+
+  def hour(time)
+    time.strftime '%H'
+  end
+
+  def day(time)
+    time.strftime '%d'
+  end
+
+  def hidden?(time)
+    time.day != Date.today.day && time.hour % 3 != 0
   end
 end
