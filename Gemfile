@@ -49,7 +49,8 @@ end
 
 # Use unicorn as the app server
 # gem 'unicorn'
-gem 'thin'
+# gem 'thin'
+gem 'puma'
 
 # Deploy with Capistrano
 # gem 'capistrano'
