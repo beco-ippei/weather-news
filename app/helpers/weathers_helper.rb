@@ -106,7 +106,8 @@ module WeathersHelper
   end
 
   def hidden?(time)
-    !(time.day == Date.today.day && time <= (DateTime.now + 6.hours)) &&
-      time.hour % 3 != 0
+#    !(time.day == Date.today.day && time <= (DateTime.now + 6.hours)) &&
+#      time.hour % 3 != 0
+    (DateTime.now + 6.hours) < time && time.hour % 3 != 0
   end
 end
