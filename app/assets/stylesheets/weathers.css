@@ -16,6 +16,8 @@ footer {
 .sunny { color: #cc0000; }
 .couldy { color: #666666; }
 .rainy { color: #3333cc; }
+.moon { color: #ffd700; }
+
 @media="all" article {
   font-size: large;
 }

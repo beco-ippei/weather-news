@@ -57,15 +57,17 @@ module WeathersHelper
     1 => 'icon-sun sunny',
     2 => 'icon-cloud couldy',
     3 => 'icon-umbrella rainy',
+    10 => 'icon-moon moon',
 #    4 => 'snowy',
 #    5 => 'sleety',
   }
 
-  def weather_icons(weather)
+  def weather_icons(weather, time = nil)
     unless WEATHERS.key?(weather)
       [nil]
     else
       key = WEATHERS[weather][0]
+      key *= 10 if daytime?(time) && ICON_CODES.keys.include?(key/100*10)
       icons = [ICON_CODES[key/100]]
       if (connect = key % 100 / 10) > 0
         icons.push connect
@@ -75,6 +77,10 @@ module WeathersHelper
       end
       icons
     end
+  end
+
+  def daytime?(time)
+    time && !(6..18).include?(time.hour)
   end
 
   def weather_name(weather)

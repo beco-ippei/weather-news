@@ -30,7 +30,7 @@ $(document).ready(function() {
     <div class="weather-box <%= 'hidden-item hidden' if hidden? repo_time %>">
       <div class="item hour"><%= hour %></div>
       <div class="item icon">
-      <% if icon = weather_icons(report.weather).first %>
+      <% if icon = weather_icons(report.weather, repo_time).first %>
         <i class="<%= icon %> icon-large"></i>
       <% else %>
         <%= weather_name(report.weather) %>
