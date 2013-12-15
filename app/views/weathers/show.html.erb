@@ -1,21 +1,15 @@
-<script>
-$(document).ready(function() {
-  $("#toggle-hourly").click(function(e) {
-    var fn = (e.target.checked ? 'remove' : 'add') + 'Class';
-    $(".weather-box.hidden-item")[fn]('hidden');
-  });
-});
-</script>
-
 <article>
 <div class="hourly-weather">
   <h2>Hourly Weather</h2>
-  <label for="toggle-hourly" class="hourly-check">
+  <!--label for="toggle-hourly" class="hourly-check">
     <div class="btn btn-primary">
       <input type="checkbox" id="toggle-hourly" />
       Hourly
     </div>
-  </label>
+  </label-->
+  <a href="javascript:void();" onclick="location.reload()">
+    <div class="btn btn-primary">Reload</div>
+  </a>
 
   <div class="wrapper">
 <% @weather.hour_reports.each_with_index do |report, i| %>
@@ -36,7 +30,7 @@ $(document).ready(function() {
         <%= weather_name(report.weather) %>
       <% end %>
       </div>
-      <div class="item temperature"><%= report.temperature %></div>
+      <div class="item hourly-temperature"><%= report.temperature %></div>
       <div class="item wind">
         <% wind_direction, wind = wind_values(report) %>
         <i class="direction direction-<%= wind_direction %> icon-long-arrow-up"></i>
@@ -49,18 +43,18 @@ $(document).ready(function() {
   </div>  <!-- end of div.wrapper -->
 </div>    <!-- end of div.hourly-weather -->
 
-<hr class="divider" style="clear: both;">
+<!--hr class="divider" style="clear: both;"-->
 
 <div class="weekly-weather">
   <h2>Weekly Weather</h2>
 <% @weather.week_reports.each_with_index do |report, i| %>
   <div class="weather-box">
     <div class='item date font-l'>
-      <span style="font-size: 0.9em;"><%= month report.date %></span>
-      <span style="font-size: 1.4em;"><%= day report.date %></span>
-      <span style="font-size: 0.6em;">(<%= wday report.date %>)</span>
+      <span class="weekly-weather-month"><%= month report.date %></span>
+      <span class="weekly-weather-day"><%= day report.date %></span>
+      <span class="weekly-weather-date">(<%= wday report.date %>)</span>
     </div>
-    <% icon1, connect, icon2 = weather_icons report.weather %>
+    <% icon1, connect, icon2 = weather_icons(report.weather) %>
     <div class="item icon">
       <i class="<%= icon1 %> icon-2x"></i>
     <% if icon2 %>
@@ -80,3 +74,13 @@ $(document).ready(function() {
 </div>    <!-- end of div.weekly-weather -->
 
 </article>
+
+<script>
+$(document).ready(function() {
+  $("#toggle-hourly").click(function(e) {
+    var fn = (e.target.checked ? 'remove' : 'add') + 'Class';
+    $(".weather-box.hidden-item")[fn]('hidden');
+  });
+});
+</script>
+

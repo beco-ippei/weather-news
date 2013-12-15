@@ -18,6 +18,7 @@ gem 'sqlite3'
 #group :production do
 #  gem 'pg'
 #end
+gem 'geocoder'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -41,6 +42,8 @@ group :test, :development do
   gem 'rspec-rails'
 #  gem 'debugger'
   gem 'ir_b'
+  gem 'rb-readline', '~> 0.4.2'
+  gem 'pry-rails'
 end
 
 #  gem 'sass-rails',   '~> 3.2.3'

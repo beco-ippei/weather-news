@@ -100,7 +100,8 @@ module WeathersHelper
   end
 
   def month(time)
-    time.strftime '%b'
+#    time.strftime '%b'
+    time.strftime '%-m/'
   end
 
   def hour(time)
