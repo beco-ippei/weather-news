@@ -94,33 +94,65 @@ label.hourly-check {
 .wind .direction-n {
   /* not lotate */
 }
+.wind .direction-nne {
+  transform: rotate(22.5deg);
+  -webkit-transform:rotate(22.5deg);
+}
 .wind .direction-ne {
   transform: rotate(45deg);
   -webkit-transform:rotate(45deg);
+}
+.wind .direction-ene {
+  transform: rotate(67.5deg);
+  -webkit-transform:rotate(67.5deg);
 }
 .wind .direction-e {
   transform: rotate(90deg);
   -webkit-transform:rotate(90deg);
 }
+.wind .direction-ese {
+  transform: rotate(112.5deg);
+  -webkit-transform:rotate(112.5deg);
+}
 .wind .direction-se {
   transform: rotate(135deg);
   -webkit-transform:rotate(135deg);
+}
+.wind .direction-sse {
+  transform: rotate(157.5deg);
+  -webkit-transform:rotate(157.5deg);
 }
 .wind .direction-s {
   transform: rotate(180deg);
   -webkit-transform:rotate(180deg);
 }
+.wind .direction-ssw {
+  transform: rotate(202.5deg);
+  -webkit-transform:rotate(202.5deg);
+}
 .wind .direction-sw {
   transform: rotate(225deg);
   -webkit-transform:rotate(225deg);
+}
+.wind .direction-wsw {
+  transform: rotate(247.5deg);
+  -webkit-transform:rotate(247.5deg);
 }
 .wind .direction-w {
   transform: rotate(270deg);
   -webkit-transform:rotate(270deg);
 }
+.wind .direction-wnw {
+  transform: rotate(292.5deg);
+  -webkit-transform:rotate(292.5deg);
+}
 .wind .direction-nw {
   transform: rotate(315deg);
   -webkit-transform:rotate(315deg);
+}
+.wind .direction-nnw {
+  transform: rotate(337.5deg);
+  -webkit-transform:rotate(337.5deg);
 }
 .hourly-weather h2 {
   display: inline-block;

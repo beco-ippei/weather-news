@@ -1,24 +1,22 @@
 # coding: utf-8
 module WeathersHelper
-  DIRECTIONS_J = {
-    2  => '北東',
-    4  => '東',
-    6  => '南東',
-    8  => '南',
-    10 => '南西',
-    12 => '西',
-    14 => '北西',
-    16 => '北',
-  }
   DIRECTIONS = {
-    2  => 'NE',
-    4  => 'E',
-    6  => 'SE',
-    8  => 'S',
-    10 => 'SW',
-    12 => 'W',
-    14 => 'NW',
-    16 => 'N',
+    1  => 'nne',
+    2  => 'ne',
+    3  => 'ene',
+    4  => 'e',
+    5  => 'ese',
+    6  => 'se',
+    7  => 'sse',
+    8  => 's',
+    9  => 'ssw',
+    10 => 'sw',
+    11 => 'wsw',
+    12 => 'w',
+    13 => 'wnw',
+    14 => 'nw',
+    15 => 'nnw',
+    16 => 'n',
   }
   # [code, name]
   # code[0,2]=1:晴,2:曇,3:雨,4:雪 / code[1]=0:なし,1:時々,2:のち
@@ -88,12 +86,9 @@ module WeathersHelper
   end
 
   def wind_values(report)
-    [DIRECTIONS[report.wind_direction.to_i].downcase, report.wind]
+    p report if report.wind_direction.to_i == 5
+    [DIRECTIONS[report.wind_direction.to_i], report.wind]
   end
-
-#  def wind_value(report)
-#    "#{DIRECTIONS_J[report.wind_direction.to_i]}/#{report.wind}"
-#  end
 
   def wday(time)
     %w[日 月 火 水 木 金 土][time.wday]
